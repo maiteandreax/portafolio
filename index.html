@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maite Rodríguez Ortiz – Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --burgundy: #6B1A2A;
+    --cherry: #8B1A3A;
+    --deep-purple: #2D1B4E;
+    --dark-plum: #1A0F2E;
+    --darkest: #08040C;
+    --lilac: #C8A8D8;
+    --lilac-soft: #E8D5F0;
+    --orchid: #7B2D5E;
+    --text-light: #F5EEF8;
+    --text-muted: #B8A0C8;
+    --gradient-main: linear-gradient(160deg, #08040C 0%, #1A0F2E 40%, #2D1B4E 70%, #6B1A2A 100%);
+    --gradient-card: linear-gradient(135deg, #110A1A 0%, #1E1030 60%, #3A1040 100%);
+    --gradient-accent: linear-gradient(135deg, #6B1A2A, #8B1A3A, #4A1060);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--darkest);
+    color: var(--text-light);
+    overflow-x: hidden;
+  }
+
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--dark-plum); }
+  ::-webkit-scrollbar-thumb { background: var(--cherry); border-radius: 2px; }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 48px;
+    background: rgba(8,4,12,0.9);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(200,168,216,0.12);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; font-weight: 300; letter-spacing: 0.3em;
+    color: var(--lilac); text-transform: uppercase;
+  }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a {
+    font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--text-muted); text-decoration: none; transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--lilac); }
+
+  /* ─── SECTIONS ─── */
+  section {
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    padding: 120px 48px 80px;
+    position: relative; overflow: hidden;
+  }
+
+  /* ─── BOTANICAL DECO ─── */
+  .deco-img {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0.12;
+    filter: saturate(0.6) brightness(0.8);
+  }
+
+  /* ─── SECTION LABELS ─── */
+  .section-label {
+    font-size: 0.65rem; letter-spacing: 0.4em; text-transform: uppercase;
+    color: var(--lilac); margin-bottom: 16px; opacity: 0.8;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 300;
+    color: var(--text-light); text-align: center; line-height: 1.1; margin-bottom: 60px;
+  }
+  .section-title em { font-style: italic; color: var(--lilac); }
+  .title-line {
+    width: 60px; height: 1px;
+    background: var(--gradient-accent);
+    margin: 20px auto 50px;
+  }
+
+  /* ══ SLIDE 1 — COVER ══ */
+  #cover {
+    background: var(--gradient-main);
+    min-height: 100vh; padding: 0; position: relative;
+  }
+  #cover::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url('imgs/deco_flores.webp') right bottom / 45% auto no-repeat;
+    opacity: 0.08; z-index: 0;
+    filter: hue-rotate(20deg) saturate(1.5);
+  }
+  #cover::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: url('imgs/deco_mariposa.webp') left 5% top 15% / 18% auto no-repeat;
+    opacity: 0.06; z-index: 0;
+  }
+  .cover-inner {
+    position: relative; z-index: 2;
+    width: 100%; height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+  }
+  .cover-left { padding: 80px 60px 80px 80px; display: flex; flex-direction: column; justify-content: center; }
+  .cover-eyebrow {
+    font-size: 0.6rem; letter-spacing: 0.5em; text-transform: uppercase;
+    color: var(--lilac); margin-bottom: 24px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .cover-eyebrow::before { content: ''; display: block; width: 40px; height: 1px; background: var(--lilac); }
+  .cover-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 5vw, 4.5rem); font-weight: 300; line-height: 1.05;
+    color: var(--text-light); margin-bottom: 8px;
+  }
+  .cover-name span { display: block; color: var(--lilac); font-style: italic; }
+  .cover-subtitle {
+    font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--text-muted); margin-top: 20px; margin-bottom: 40px;
+  }
+  .cover-cta {
+    display: inline-block; padding: 14px 36px;
+    border: 1px solid rgba(200,168,216,0.4);
+    color: var(--lilac); text-decoration: none;
+    font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+    transition: all 0.3s; width: fit-content;
+  }
+  .cover-cta:hover { background: rgba(200,168,216,0.1); border-color: var(--lilac); }
+  .cover-right {
+    position: relative; height: 100vh;
+    display: flex; align-items: flex-end; justify-content: center; overflow: hidden;
+  }
+  .cover-photo-frame { position: relative; width: 480px; height: 620px; }
+  .cover-photo {
+    position: relative; z-index: 1;
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center top; display: block;
+  }
+  .cover-socials {
+    position: absolute; bottom: 40px; left: 80px;
+    display: flex; gap: 20px; align-items: center;
+  }
+  .cover-socials span { font-size: 0.6rem; letter-spacing: 0.2em; color: var(--text-muted); }
+  .cover-scroll-hint {
+    position: absolute; bottom: 40px; right: 60px;
+    display: flex; flex-direction: column; align-items: center;
+    gap: 8px; color: var(--text-muted); font-size: 0.55rem;
+    letter-spacing: 0.3em; text-transform: uppercase;
+  }
+  .scroll-line {
+    width: 1px; height: 50px;
+    background: linear-gradient(to bottom, var(--lilac), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+  @keyframes scrollPulse { 0%,100%{opacity:0.3} 50%{opacity:1} }
+
+  /* ══ SLIDE 2 — ÍNDICE ══ */
+  #indice {
+    background: linear-gradient(160deg, #08040C 0%, #1A0F2E 100%);
+    position: relative;
+  }
+  #indice::before {
+    content: '';
+    position: absolute; top: 0; right: 0; width: 40%; height: 100%;
+    background: url('imgs/deco_orquideas.webp') center / cover no-repeat;
+    opacity: 0.06; filter: hue-rotate(30deg);
+  }
+  #indice::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; width: 30%; height: 60%;
+    background: url('imgs/deco_mariposa.webp') center / contain no-repeat;
+    opacity: 0.05;
+  }
+  .index-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 2px; width: 100%; max-width: 900px; position: relative; z-index: 2;
+  }
+  .index-item {
+    display: flex; align-items: center; gap: 24px;
+    padding: 36px 40px;
+    background: rgba(17,10,26,0.7);
+    text-decoration: none; color: var(--text-light);
+    border: 1px solid rgba(200,168,216,0.08);
+    transition: all 0.4s ease; position: relative; overflow: hidden;
+    backdrop-filter: blur(10px);
+  }
+  .index-item::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+    background: var(--gradient-accent); transform: scaleY(0); transition: transform 0.3s ease;
+  }
+  .index-item:hover { background: rgba(45,16,64,0.8); transform: translateX(6px); border-color: rgba(200,168,216,0.2); }
+  .index-item:hover::before { transform: scaleY(1); }
+  .index-num {
+    font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300;
+    color: rgba(200,168,216,0.2); line-height: 1; min-width: 50px; transition: color 0.3s;
+  }
+  .index-item:hover .index-num { color: rgba(200,168,216,0.5); }
+  .index-section-name { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--lilac); margin-bottom: 6px; }
+  .index-desc { font-size: 0.75rem; color: var(--text-muted); font-weight: 300; }
+
+  /* ══ SLIDE 3 — SOBRE MÍ ══ */
+  #sobre-mi {
+    background: linear-gradient(160deg, #08040C 0%, #1A0F2E 60%, #2D1B4E 100%);
+    position: relative;
+  }
+  #sobre-mi::before {
+    content: '';
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: url('imgs/deco_collage.jpg') left center / 35% auto no-repeat;
+    opacity: 0.04;
+  }
+  #sobre-mi::after {
+    content: '';
+    position: absolute; bottom: -50px; right: -50px; width: 400px; height: 400px;
+    background: url('imgs/deco_flores.webp') center / contain no-repeat;
+    opacity: 0.07; filter: hue-rotate(10deg);
+  }
+  .about-inner {
+    display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px;
+    max-width: 1100px; width: 100%; align-items: center; position: relative; z-index: 2;
+  }
+  .about-photo-wrap { position: relative; }
+  .about-photo-frame { width: 100%; aspect-ratio: 3/4; position: relative; }
+  .about-photo-frame::before {
+    content: ''; position: absolute; inset: -1px;
+    background: var(--gradient-accent); border-radius: 2px;
+  }
+  .about-photo { position: relative; z-index: 1; width: 100%; height: 100%; object-fit: cover; object-position: center top; border-radius: 2px; display: block; }
+  .about-badge {
+    position: absolute; bottom: -20px; right: -20px;
+    width: 110px; height: 110px;
+    background: var(--gradient-accent); border-radius: 50%;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    z-index: 3; text-align: center;
+  }
+  .about-badge-text { font-size: 0.5rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.8); line-height: 1.4; }
+  .about-badge-icon { font-size: 1.4rem; margin-bottom: 4px; }
+  .about-intro { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 300; font-style: italic; color: var(--lilac); line-height: 1.4; margin-bottom: 28px; }
+  .about-text { font-size: 0.82rem; line-height: 1.9; color: var(--text-muted); font-weight: 300; margin-bottom: 20px; }
+  .about-text strong { color: var(--text-light); font-weight: 500; }
+  .about-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; }
+  .about-tag {
+    padding: 6px 16px; border: 1px solid rgba(200,168,216,0.3);
+    font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--lilac); border-radius: 20px;
+  }
+
+  /* ══ SLIDE 4 — VIDEOS ══ */
+  #videos {
+    background: linear-gradient(180deg, #08040C 0%, #1A0F2E 100%);
+    position: relative;
+  }
+  #videos::before {
+    content: '';
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: 
+      url('imgs/deco_mariposa.webp') left 2% top 8% / 12% auto no-repeat,
+      url('imgs/deco_mariposa.webp') right 3% bottom 10% / 10% auto no-repeat;
+    opacity: 0.07; filter: hue-rotate(30deg);
+  }
+  .videos-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 32px; max-width: 1100px; width: 100%; position: relative; z-index: 2;
+  }
+  .iphone-frame {
+    position: relative; width: 100%; aspect-ratio: 9/19.5;
+    background: #0D0D0D; border-radius: 36px; padding: 12px;
+    box-shadow: 0 0 0 2px #222, 0 0 0 4px #111, 0 30px 80px rgba(107,26,42,0.5), inset 0 0 0 1px rgba(255,255,255,0.04);
+  }
+  .iphone-frame::before {
+    content: ''; position: absolute; top: 12px; left: 50%; transform: translateX(-50%);
+    width: 80px; height: 6px; background: #1A1A1A; border-radius: 3px; z-index: 10;
+  }
+  .iphone-screen { width: 100%; height: 100%; border-radius: 26px; overflow: hidden; background: #000; position: relative; }
+  .iphone-screen video { width: 100%; height: 100%; object-fit: cover; border-radius: 26px; }
+
+  /* ══ SLIDE 5 — FOTOS ══ */
+  #fotos {
+    background: linear-gradient(160deg, #1A0F2E 0%, #08040C 100%);
+    position: relative;
+  }
+  #fotos::before {
+    content: '';
+    position: absolute; top: 0; right: 0; width: 30%; height: 100%;
+    background: url('imgs/deco_orquideas.webp') center / contain no-repeat;
+    opacity: 0.05;
+  }
+  #fotos::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; width: 25%; height: 70%;
+    background: url('imgs/deco_flores.webp') center / contain no-repeat;
+    opacity: 0.05; filter: hue-rotate(15deg);
+  }
+  .fotos-masonry {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 340px);
+    gap: 10px; max-width: 1050px; width: 100%; position: relative; z-index: 2;
+  }
+  .foto-item { position: relative; overflow: hidden; border-radius: 6px; cursor: pointer; }
+  .foto-item img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+    transition: transform 0.6s ease;
+  }
+  .foto-item:nth-child(1) img { object-position: center top; }
+  .foto-item:nth-child(2) img { object-position: center 30%; }
+  .foto-item:nth-child(3) img { object-position: center 15%; }
+  .foto-item:nth-child(4) img { object-position: center top; }
+  .foto-item:nth-child(5) img { object-position: center 25%; }
+  .foto-item:nth-child(6) img { object-position: center 20%; }
+  .foto-item:hover img { transform: scale(1.04); }
+  .foto-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(107,26,42,0.8) 0%, transparent 50%);
+    opacity: 0; transition: opacity 0.4s;
+    display: flex; align-items: flex-end; padding: 16px; border-radius: 6px;
+  }
+  .foto-item:hover .foto-overlay { opacity: 1; }
+  .foto-overlay span { font-size: 0.6rem; letter-spacing: 0.2em; color: rgba(255,255,255,0.9); text-transform: uppercase; }
+
+  /* ══ SLIDE 6 — COLABORACIONES ══ */
+  #colaboraciones {
+    background: linear-gradient(160deg, #08040C 0%, #2D1B4E 50%, #1A0F2E 100%);
+    position: relative;
+  }
+  #colaboraciones::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url('imgs/deco_collage.jpg') center / cover no-repeat;
+    opacity: 0.03;
+  }
+  #colaboraciones::after {
+    content: '';
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(107,26,42,0.15) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .colabs-intro { font-size: 0.8rem; color: var(--text-muted); text-align: center; max-width: 500px; line-height: 1.8; margin-bottom: 70px; position: relative; z-index: 2; }
+  .brands-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; max-width: 1000px; width: 100%; position: relative; z-index: 2; }
+  .brand-card {
+    background: rgba(17,10,26,0.8); border: 1px solid rgba(200,168,216,0.1); border-radius: 6px;
+    padding: 36px 20px; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 16px; transition: all 0.4s; position: relative; overflow: hidden;
+    backdrop-filter: blur(10px);
+  }
+  .brand-card:hover { transform: translateY(-8px); border-color: rgba(200,168,216,0.3); box-shadow: 0 20px 60px rgba(107,26,42,0.4); }
+  .brand-emoji { font-size: 2.5rem; position: relative; z-index: 1; }
+  .brand-name { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); text-align: center; position: relative; z-index: 1; font-weight: 500; }
+
+  /* ══ SLIDE 7 — SERVICIOS ══ */
+  #servicios {
+    background: linear-gradient(160deg, #2D1B4E 0%, #08040C 60%, #1A0F2E 100%);
+    position: relative;
+  }
+  #servicios::before {
+    content: '';
+    position: absolute; top: 0; right: 0; width: 100%; height: 100%;
+    background: url('imgs/deco_flores.webp') right bottom / 35% auto no-repeat;
+    opacity: 0.05; filter: hue-rotate(-10deg);
+  }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1000px; width: 100%; position: relative; z-index: 2; }
+  .service-card {
+    background: rgba(17,10,26,0.75); border: 1px solid rgba(200,168,216,0.12); border-radius: 6px;
+    padding: 44px 32px; display: flex; flex-direction: column; align-items: flex-start; gap: 16px;
+    transition: all 0.4s; position: relative; overflow: hidden; backdrop-filter: blur(10px);
+  }
+  .service-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--gradient-accent); transform: scaleX(0); transition: transform 0.4s; }
+  .service-card:hover { transform: translateY(-6px); border-color: rgba(200,168,216,0.25); box-shadow: 0 30px 80px rgba(107,26,42,0.3); }
+  .service-card:hover::after { transform: scaleX(1); }
+  .service-icon { font-size: 2rem; margin-bottom: 4px; }
+  .service-platform { font-size: 0.55rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--lilac); font-weight: 500; }
+  .service-name { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 300; color: var(--text-light); line-height: 1.2; }
+  .service-desc { font-size: 0.72rem; color: var(--text-muted); line-height: 1.7; font-weight: 300; }
+
+  /* ══ SLIDE 8 — ¿POR QUÉ YO? ══ */
+  #por-que-yo {
+    background: linear-gradient(160deg, #08040C 0%, #1A0F2E 50%, #2D1B4E 100%);
+    position: relative;
+  }
+  #por-que-yo::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: 
+      url('imgs/deco_mariposa.webp') right 5% top 10% / 15% auto no-repeat,
+      url('imgs/deco_orquideas.webp') left 3% bottom 5% / 18% auto no-repeat;
+    opacity: 0.07;
+  }
+  .why-inner { max-width: 900px; width: 100%; position: relative; z-index: 2; }
+  .why-quote { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 300; font-style: italic; color: var(--lilac); text-align: center; line-height: 1.4; margin-bottom: 60px; padding: 0 40px; }
+  .why-pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-bottom: 60px; }
+  .pillar { padding: 36px 28px; background: rgba(17,10,26,0.7); border: 1px solid rgba(200,168,216,0.08); text-align: center; transition: all 0.3s; backdrop-filter: blur(6px); }
+  .pillar:hover { background: rgba(45,16,64,0.8); border-color: rgba(200,168,216,0.2); }
+  .pillar-icon { font-size: 2rem; margin-bottom: 16px; }
+  .pillar-title { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 400; color: var(--text-light); margin-bottom: 10px; }
+  .pillar-text { font-size: 0.7rem; color: var(--text-muted); line-height: 1.7; font-weight: 300; }
+  .why-closing { text-align: center; font-size: 0.8rem; color: var(--text-muted); line-height: 1.9; max-width: 700px; margin: 0 auto; font-weight: 300; }
+  .why-closing strong { color: var(--lilac); font-weight: 500; }
+
+  /* ══ SLIDE 9 — CONTACTO ══ */
+  #contacto {
+    background: var(--gradient-main);
+    position: relative; min-height: 100vh;
+  }
+  #contacto::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: 
+      url('imgs/deco_flores.webp') left bottom / 30% auto no-repeat,
+      url('imgs/deco_mariposa.webp') right top / 20% auto no-repeat;
+    opacity: 0.07; filter: hue-rotate(5deg);
+  }
+  .contact-inner { max-width: 700px; width: 100%; position: relative; z-index: 2; text-align: center; }
+  .contact-tagline { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 300; font-style: italic; color: var(--lilac); margin-bottom: 16px; line-height: 1.3; }
+  .contact-sub { font-size: 0.72rem; color: var(--text-muted); margin-bottom: 60px; letter-spacing: 0.1em; }
+  .contact-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 24px; }
+  .contact-card {
+    background: rgba(17,10,26,0.7); border: 1px solid rgba(200,168,216,0.15); border-radius: 6px;
+    padding: 28px 24px; display: flex; align-items: center; gap: 16px;
+    text-decoration: none; color: var(--text-light); transition: all 0.3s; backdrop-filter: blur(10px);
+  }
+  .contact-card:hover { background: rgba(107,26,42,0.35); border-color: rgba(200,168,216,0.35); transform: translateY(-4px); }
+  .contact-card-icon { width: 44px; height: 44px; background: var(--gradient-accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+  .contact-card-label { font-size: 0.55rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--lilac); margin-bottom: 4px; }
+  .contact-card-value { font-size: 0.82rem; font-weight: 400; color: var(--text-light); }
+  .contact-email-card { grid-column: span 2; }
+  .contact-footer { margin-top: 60px; display: flex; align-items: center; justify-content: center; gap: 20px; }
+  .footer-line { width: 60px; height: 1px; background: rgba(200,168,216,0.3); }
+  .footer-name { font-family: 'Cormorant Garamond', serif; font-size: 0.9rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--text-muted); font-weight: 300; }
+
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    section { padding: 100px 24px 60px; }
+    .cover-inner { grid-template-columns: 1fr; }
+    .cover-left { padding: 40px 24px; text-align: center; }
+    .cover-right { height: 50vh; }
+    .cover-photo-frame { width: 260px; height: 350px; }
+    .about-inner { grid-template-columns: 1fr; gap: 40px; }
+    .index-grid { grid-template-columns: 1fr; }
+    .videos-grid { grid-template-columns: repeat(2, 1fr); }
+    .brands-grid { grid-template-columns: repeat(2, 1fr); }
+    .services-grid { grid-template-columns: 1fr; }
+    .why-pillars { grid-template-columns: 1fr; }
+    .contact-cards { grid-template-columns: 1fr; }
+    .contact-email-card { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <div class="nav-logo">Maite R.O.</div>
+  <div class="nav-links">
+    <a href="#sobre-mi">Sobre mí</a>
+    <a href="#videos">Videos</a>
+    <a href="#fotos">Fotos</a>
+    <a href="#colaboraciones">Colaboraciones</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════
+     SLIDE 1 — PORTADA
+══════════════════════════════════════ -->
+<section id="cover">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="cover-inner">
+    <div class="cover-left">
+      <div class="cover-eyebrow fade-in fade-in-1">Portfolio · Creadora de Contenido</div>
+      <h1 class="cover-name fade-in fade-in-2">
+        Maite<br>Rodríguez<br><span>Ortiz</span>
+      </h1>
+      <p class="cover-subtitle fade-in fade-in-3">Contenido · Moda · Lifestyle · Odontología</p>
+      <a href="#indice" class="cover-cta fade-in fade-in-4">Ver Portfolio →</a>
+    </div>
+    <div class="cover-right">
+      <div class="cover-photo-frame fade-in fade-in-2">
+        <img src="imgs/cover_nobg.png" style="object-position:center top;" class="cover-photo" alt="Maite Rodríguez Ortiz" style="object-position: center top;">
+      </div>
+    </div>
+  </div>
+  <div class="cover-socials">
+    <span>@maiteandreax</span>
+  </div>
+  <div class="cover-scroll-hint">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE 2 — ÍNDICE
+══════════════════════════════════════ -->
+<section id="indice">
+  <div class="orb"></div>
+  <span class="section-label">Contenido</span>
+  <h2 class="section-title">¿Qué vas a<br><em>encontrar aquí?</em></h2>
+  <div class="index-grid">
+    <a href="#sobre-mi" class="index-item">
+      <div class="index-num">01</div>
+      <div class="index-info">
+        <div class="index-section-name">Sobre mí</div>
+        <div class="index-desc">Quién soy, qué hago y qué me mueve</div>
+      </div>
+    </a>
+    <a href="#videos" class="index-item">
+      <div class="index-num">02</div>
+      <div class="index-info">
+        <div class="index-section-name">Videos</div>
+        <div class="index-desc">Mi trabajo en formato audiovisual</div>
+      </div>
+    </a>
+    <a href="#fotos" class="index-item">
+      <div class="index-num">03</div>
+      <div class="index-info">
+        <div class="index-section-name">Fotos</div>
+        <div class="index-desc">Mi presencia visual y estilo</div>
+      </div>
+    </a>
+    <a href="#colaboraciones" class="index-item">
+      <div class="index-num">04</div>
+      <div class="index-info">
+        <div class="index-section-name">Colaboraciones</div>
+        <div class="index-desc">Marcas con las que he trabajado</div>
+      </div>
+    </a>
+    <a href="#servicios" class="index-item">
+      <div class="index-num">05</div>
+      <div class="index-info">
+        <div class="index-section-name">Mis servicios</div>
+        <div class="index-desc">Lo que puedo crear para tu marca</div>
+      </div>
+    </a>
+    <a href="#por-que-yo" class="index-item">
+      <div class="index-num">06</div>
+      <div class="index-info">
+        <div class="index-section-name">¿Por qué yo?</div>
+        <div class="index-desc">Lo que me hace diferente</div>
+      </div>
+    </a>
+    <a href="#contacto" class="index-item" style="grid-column: span 2;">
+      <div class="index-num">07</div>
+      <div class="index-info">
+        <div class="index-section-name">Mi contacto</div>
+        <div class="index-desc">Hablemos y creemos algo increíble juntos</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE 3 — SOBRE MÍ
+══════════════════════════════════════ -->
+<section id="sobre-mi">
+  <div class="orb orb-1"></div>
+  <div class="about-inner">
+    <div class="about-photo-wrap">
+      <div class="about-photo-frame">
+        <!-- REEMPLAZA EL DIV DE ABAJO CON: <img src="TU-FOTO-2.jpg" class="about-photo" alt="Maite"> -->
+        <img src="imgs/img2.png" class="about-photo" alt="Maite" style="object-position:center top;">
+      </div>
+      <div class="about-badge">
+        <div class="about-badge-icon">✦</div>
+        <div class="about-badge-text">Creadora<br>&<br>Odontóloga</div>
+      </div>
+    </div>
+    <div class="about-content">
+      <span class="section-label">Sobre mí</span>
+      <p class="about-intro">"Hago dos cosas que amo:<br>transformar sonrisas y<br>crear contenido que conecta."</p>
+      <p class="about-text">
+        Soy <strong>Maite Rodríguez Ortiz</strong> — odontóloga de vocación y creadora de contenido por pasión. El 80% de mi vida lo dedico a ayudar a las personas a mejorar su salud dental, su estilo de vida y algo que me parece absolutamente hermoso: su <strong>autoestima y bienestar emocional</strong>.
+      </p>
+      <p class="about-text">
+        El tiempo restante lo invierto en algo que me llena con la misma intensidad: <strong>crear contenido dinámico y auténtico</strong>. Desde un outfit que te inspire hasta una recomendación de serie que no podrás dejar de ver, pasando por hauls, GRWMs, tips de maquillaje, música y esos lugares que simplemente <em>tienes que conocer</em>.
+      </p>
+      <p class="about-text">
+        Lo que me mueve es simple y poderoso a la vez: <strong>hacer feliz a las personas</strong>. Cada video, cada foto, cada consejo de estilo es una pequeña chispa que espero que encienda algo en quien lo ve. Porque de eso se trata todo esto, ¿no?
+      </p>
+      <div class="about-tags">
+        <span class="about-tag">Moda</span>
+        <span class="about-tag">Maquillaje</span>
+        <span class="about-tag">Lifestyle</span>
+        <span class="about-tag">GRWM</span>
+        <span class="about-tag">Hauls</span>
+        <span class="about-tag">Música</span>
+        <span class="about-tag">Series & Películas</span>
+        <span class="about-tag">Odontología</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE 4 — VIDEOS
+══════════════════════════════════════ -->
+<section id="videos">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <span class="section-label">Contenido audiovisual</span>
+  <h2 class="section-title">Mis <em>Videos</em></h2>
+  <div class="title-line"></div>
+  <div class="videos-grid">
+
+    <!-- VIDEO 1: Reemplaza el div .video-placeholder con <video src="video1.mp4" controls playsinline></video> -->
+    <div style="position:relative">
+      <div class="iphone-frame">
+        <div class="iphone-screen">
+          <video src="video1.mp4" controls playsinline style="width:100%;height:100%;object-fit:cover;border-radius:26px;"></video>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIDEO 2 -->
+    <div style="position:relative">
+      <div class="iphone-frame">
+        <div class="iphone-screen">
+          <video src="video2.mp4" controls playsinline style="width:100%;height:100%;object-fit:cover;border-radius:26px;"></video>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIDEO 3 -->
+    <div style="position:relative">
+      <div class="iphone-frame">
+        <div class="iphone-screen">
+          <video src="video3.mp4" controls playsinline style="width:100%;height:100%;object-fit:cover;border-radius:26px;"></video>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIDEO 4 -->
+    <div style="position:relative">
+      <div class="iphone-frame">
+        <div class="iphone-screen">
+          <video src="video4.mp4" controls playsinline style="width:100%;height:100%;object-fit:cover;border-radius:26px;"></video>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE 5 — FOTOS
+══════════════════════════════════════ -->
+<section id="fotos">
+  <span class="section-label">Galería</span>
+  <h2 class="section-title">Mis <em>Fotos</em></h2>
+  <div class="title-line"></div>
+  <div class="fotos-masonry">
+    <div class="foto-item">
+      <!-- <img src="foto1.jpg" alt="Maite"> -->
+      <img src="imgs/img3.png" alt="Maite">
+      <div class="foto-overlay"><span>@maiteandreax</span></div>
+    </div>
+    <div class="foto-item">
+      <img src="imgs/img4.png" alt="Maite">
+      <div class="foto-overlay"><span>@maiteandreax</span></div>
+    </div>
+    <div class="foto-item">
+      <img src="imgs/img5.png" alt="Maite">
+      <div class="foto-overlay"><span>@maiteandreax</span></div>
+    </div>
+    <div class="foto-item">
+      <img src="imgs/img6.png" alt="Maite">
+      <div class="foto-overlay"><span>@maiteandreax</span></div>
+    </div>
+    <div class="foto-item">
+      <img src="imgs/img7.png" alt="Maite">
+      <div class="foto-overlay"><span>@maiteandreax</span></div>
+    </div>
+    <div class="foto-item">
+      <img src="imgs/img8.png" alt="Maite">
+      <div class="foto-overlay"><span>@maiteandreax</span></div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE 6 — COLABORACIONES
+══════════════════════════════════════ -->
+<section id="colaboraciones">
+  <div class="orb"></div>
+  <span class="section-label">Marcas</span>
+  <h2 class="section-title">Mis <em>Colaboraciones</em></h2>
+  <p class="colabs-intro">
+    He tenido el privilegio de trabajar con marcas líderes en su categoría, creando contenido auténtico y de alto impacto que conecta con audiencias reales.
+  </p>
+  <div class="brands-grid">
+    <div class="brand-card">
+      <div class="brand-emoji">💜</div>
+      <div class="brand-name">Pantene</div>
+    </div>
+    <div class="brand-card">
+      <div class="brand-emoji">🕊️</div>
+      <div class="brand-name">Dove</div>
+    </div>
+    <div class="brand-card">
+      <div class="brand-emoji">✨</div>
+      <div class="brand-name">Elvive<br><span style="font-size:0.45rem;opacity:0.7">L'Oréal Paris</span></div>
+    </div>
+    <div class="brand-card">
+      <div class="brand-emoji">🌸</div>
+      <div class="brand-name">Downy</div>
+    </div>
+    <div class="brand-card">
+      <div class="brand-emoji">🌟</div>
+      <div class="brand-name">Secret</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE 7 — SERVICIOS
+══════════════════════════════════════ -->
+<section id="servicios">
+  <span class="section-label">¿Qué ofrezco?</span>
+  <h2 class="section-title">Mis <em>Servicios</em></h2>
+  <div class="title-line"></div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">📱</div>
+      <div class="service-platform">Instagram</div>
+      <div class="service-name">Historias</div>
+      <div class="service-desc">Contenido dinámico y efímero que genera conexión inmediata con tu audiencia. Encuestas, stickers, links y más.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🎬</div>
+      <div class="service-platform">Instagram</div>
+      <div class="service-name">Reels</div>
+      <div class="service-desc">Videos cortos de alto impacto visual con edición creativa, música tendencia y guión propio para maximizar el alcance.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🎥</div>
+      <div class="service-platform">Multi-plataforma</div>
+      <div class="service-name">Video</div>
+      <div class="service-desc">Producción audiovisual completa: desde la idea hasta la edición final. Unboxing, tutoriales, reviews y más.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🎵</div>
+      <div class="service-platform">TikTok</div>
+      <div class="service-name">Historias</div>
+      <div class="service-desc">Contenido nativo de TikTok que integra naturalmente tu marca en mi narrativa diaria y genera conversación.</div>
+    </div>
+    <div class="service-card" style="grid-column: span 2;">
+      <div class="service-icon">✨</div>
+      <div class="service-platform">TikTok</div>
+      <div class="service-name">Videos TikTok</div>
+      <div class="service-desc">Contenido 100% tendencia, con sonidos virales, formatos creativos y storytelling que retiene a la audiencia de principio a fin. Ideal para campañas con alto potencial de viralidad.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE 8 — ¿POR QUÉ YO?
+══════════════════════════════════════ -->
+<section id="por-que-yo">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="why-inner">
+    <span class="section-label" style="text-align:center;display:block">La propuesta</span>
+    <h2 class="section-title">¿Por qué <em>yo?</em></h2>
+    <div class="why-quote">
+      "No busco solo crear contenido.<br>Busco dejar una huella en quien lo ve."
+    </div>
+    <div class="why-pillars">
+      <div class="pillar">
+        <div class="pillar-icon">🎨</div>
+        <div class="pillar-title">Creativa & Artística</div>
+        <div class="pillar-text">Cada pieza de contenido que creo tiene una intención estética y narrativa. Me apasiona la fotografía, la edición de video y encontrar ese ángulo que nadie más está viendo.</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">⚡</div>
+        <div class="pillar-title">Proactiva & Responsable</div>
+        <div class="pillar-text">Cumplo compromisos, propongo ideas antes de que me las pidan y siempre estoy un paso adelante. Las marcas que trabajan conmigo saben que pueden confiar en mí.</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">🌐</div>
+        <div class="pillar-title">Nativa Digital</div>
+        <div class="pillar-text">Las redes sociales no son una herramienta para mí, son mi idioma natural. Entiendo los algoritmos, los formatos y —lo más importante— a las personas.</div>
+      </div>
+    </div>
+    <p class="why-closing">
+      Tengo algo que pocas creadoras tienen: la <strong>sensibilidad de una profesional de la salud</strong> combinada con el <strong>ojo de una creativa</strong>. Sé comunicar de forma que la gente no solo escuche, sino que sienta. Si buscas una colaboradora que cuide tu marca como si fuera suya, aquí estoy. <strong>Hablemos.</strong>
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SLIDE 9 — CONTACTO
+══════════════════════════════════════ -->
+<section id="contacto">
+  <div class="orb orb-1"></div>
+  <div class="contact-inner">
+    <span class="section-label">¿Listo para colaborar?</span>
+    <p class="contact-tagline">"Creemos algo<br>que la gente no<br>pueda ignorar."</p>
+    <p class="contact-sub">Estoy disponible para colaboraciones, campañas y proyectos creativos</p>
+
+    <div class="contact-cards">
+      <a href="https://instagram.com/maiteandreax" target="_blank" class="contact-card">
+        <div class="contact-card-icon">📸</div>
+        <div class="contact-card-info">
+          <div class="contact-card-label">Instagram</div>
+          <div class="contact-card-value">@maiteandreax</div>
+        </div>
+      </a>
+      <a href="https://tiktok.com/@maiteandreax" target="_blank" class="contact-card">
+        <div class="contact-card-icon">🎵</div>
+        <div class="contact-card-info">
+          <div class="contact-card-label">TikTok</div>
+          <div class="contact-card-value">@maiteandreax</div>
+        </div>
+      </a>
+      <a href="mailto:maiteandrear16@gmail.com" class="contact-card contact-email-card">
+        <div class="contact-card-icon">✉️</div>
+        <div class="contact-card-info">
+          <div class="contact-card-label">Correo electrónico</div>
+          <div class="contact-card-value">maiteandrear16@gmail.com</div>
+        </div>
+      </a>
+      <a href="tel:+56950517090" class="contact-card contact-email-card">
+        <div class="contact-card-icon">📞</div>
+        <div class="contact-card-info">
+          <div class="contact-card-label">Teléfono / WhatsApp</div>
+          <div class="contact-card-value">+56 9 5051 7090</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="contact-footer">
+      <div class="footer-line"></div>
+      <div class="footer-name">Maite Rodríguez Ortiz</div>
+      <div class="footer-line"></div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
